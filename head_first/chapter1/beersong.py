@@ -1,6 +1,6 @@
 word = "bottles"
 
-for beer_num in range (99, 1, -1):
+for beer_num in range(99, 1, -1):
     print(beer_num, word, " of beer on the wall,")
     print(beer_num, word, " bottles of beer.")
     print("You take one down,")
