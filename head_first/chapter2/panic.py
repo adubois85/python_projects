@@ -11,7 +11,7 @@ plist.pop(2)
 temp = plist.pop(3)
 plist.insert(2, temp)
 temp = plist.pop()
-plist.insert((len(plist) -1), temp)
+plist.insert((len(plist) - 1), temp)
 
 # How the book does it
 
