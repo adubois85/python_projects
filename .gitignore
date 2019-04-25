@@ -9,4 +9,4 @@
 /npm-debug.log
 /webpack/target.js
 /.vscode
-tempCodeRunnerFile.py
+**/tempCodeRunnerFile
