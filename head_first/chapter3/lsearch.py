@@ -1,7 +1,6 @@
-def search_for_vowels(word: str) -> set:
-    """Propmpts user for a word and returns any vowels in it (but not 'y')"""
-    vowels = set('aeiou')
-    return vowels.intersection(set(word))
+def search_for_letters(phrase: str, letters: str) -> set:
+    """Returns set of 'letters' found in 'phrase'."""
+    return set(letters).intersection(set(phrase))
 
 
-search_for_vowels()
+# search_for_letters()
