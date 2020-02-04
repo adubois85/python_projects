@@ -1,12 +1,7 @@
-def search_for_vowels():
+def search_for_vowels(word: str) -> set:
     """Propmpts user for a word and returns any vowels in it (but not 'y')"""
     vowels = set('aeiou')
-    word = input('Type your word here to search for the vowels: ')
-    print(vowels.intersection(set(word)))
-
-    # found = vowels.intersection(set(word))
-    # for vowel in found:
-    #     print(vowel)
+    return vowels.intersection(set(word))
 
 
 search_for_vowels()
