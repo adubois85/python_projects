@@ -10,3 +10,4 @@
 /webpack/target.js
 /.vscode
 **/tempCodeRunnerFile
+*.pyc
