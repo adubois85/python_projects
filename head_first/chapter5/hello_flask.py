@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -16,6 +16,12 @@ def do_search() -> str:
 def search4letters(phrase: str, letters: str = 'aeiou') -> set:
     """Returns set of 'letters' found in 'phrase'."""
     return set(letters).intersection(set(phrase))
+
+
+@app.route('/entry')
+def entry_page() -> 'html':
+    return render_template('entry.html',
+                            the_title='Welcome to search4letters on the web!')
 
 
 app.run()
