@@ -8,7 +8,7 @@ def hello() -> str:
     return 'Hello world from Flask!'
 
 
-@app.route('/search4')
+@app.route('/search4', methods=['GET', 'POST'])
 def do_search() -> str:
     return str(search4letters('life, the universe, and everything', 'eiru,!'))
 
@@ -18,7 +18,7 @@ def search4letters(phrase: str, letters: str = 'aeiou') -> set:
     return set(letters).intersection(set(phrase))
 
 
-@app.route('/entry')
+@app.route('/entry', methods=['GET', 'POST'])
 def entry_page() -> 'html':
     return render_template('entry.html',
                            the_title='Welcome to search4letters on the web!')
