@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,7 +10,9 @@ def hello() -> str:
 
 @app.route('/search4', methods=['GET', 'POST'])
 def do_search() -> str:
-    return str(search4letters('life, the universe, and everything', 'eiru,!'))
+    phrase = request.form['phrase']
+    letters = request.form['letters']
+    return str(search4letters(phrase, letters))
 
 
 def search4letters(phrase: str, letters: str = 'aeiou') -> set:
