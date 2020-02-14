@@ -24,4 +24,4 @@ def entry_page() -> 'html':
                            the_title='Welcome to search4letters on the web!')
 
 
-app.run()
+app.run(debug=True)
