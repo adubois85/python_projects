@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, escape
 
 app = Flask(__name__)
 
@@ -44,7 +44,7 @@ def entry_page() -> 'html':  # noqa: F821
 def view_log() -> str:
     with open('vsearch.log') as log:
         contents = log.read()
-    return contents
+    return escape(contents)
 
 
 if __name__ == '__main__':
