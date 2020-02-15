@@ -3,6 +3,11 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
+def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
+    with open('vsearch.txt', 'a') as log:
+        print(req, res, file=log)
+
+
 # @app.route('/')
 # def hello() -> '302':
 #     return redirect('/entry')
@@ -37,8 +42,3 @@ def entry_page() -> 'html':  # noqa: F821
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
-    with open('vsearch.txt', 'a') as log:
-        print(req, res, file=log)
