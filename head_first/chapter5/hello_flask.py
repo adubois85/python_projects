@@ -6,7 +6,7 @@ app = Flask(__name__)
 # @app.route('/')
 # def hello() -> '302':
 #     return redirect('/entry')
-    # return 'Hello world from Flask!'
+# return 'Hello world from Flask!'
 
 
 @app.route('/search4', methods=['GET', 'POST'])
@@ -25,6 +25,7 @@ def do_search() -> 'html':  # noqa: F821
 def search4letters(phrase: str, letters: str = 'aeiou') -> set:
     """Returns set of 'letters' found in 'phrase'."""
     return set(letters).intersection(set(phrase))
+
 
 @app.route('/')
 @app.route('/entry', methods=['GET', 'POST'])
