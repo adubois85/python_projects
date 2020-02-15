@@ -12,3 +12,4 @@
 **/tempCodeRunnerFile
 *.pyc
 __pycache__
+*.log
