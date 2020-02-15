@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
-    with open('vsearch.txt', 'a') as log:
+    with open('vsearch.log', 'a') as log:
         print(req, res, file=log)
 
 
