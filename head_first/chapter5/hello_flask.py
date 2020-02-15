@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello() -> '302':
-    return redirect('/entry')
+# @app.route('/')
+# def hello() -> '302':
+#     return redirect('/entry')
     # return 'Hello world from Flask!'
 
 
