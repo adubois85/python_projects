@@ -36,3 +36,8 @@ def entry_page() -> 'html':  # noqa: F821
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
+    with open('vsearch.txt', 'a') as log:
+        print(req, res, file=log)
