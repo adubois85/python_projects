@@ -34,4 +34,5 @@ def entry_page() -> 'html':  # noqa: F821
                            the_title='Welcome to search4letters on the web!')
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
