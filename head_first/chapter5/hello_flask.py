@@ -26,7 +26,7 @@ def search4letters(phrase: str, letters: str = 'aeiou') -> set:
     """Returns set of 'letters' found in 'phrase'."""
     return set(letters).intersection(set(phrase))
 
-
+@app.route('/')
 @app.route('/entry', methods=['GET', 'POST'])
 def entry_page() -> 'html':  # noqa: F821
     return render_template('entry.html',
