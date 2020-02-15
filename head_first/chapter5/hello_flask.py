@@ -10,7 +10,7 @@ def hello() -> '302':
 
 
 @app.route('/search4', methods=['GET', 'POST'])
-def do_search() -> 'html':
+def do_search() -> 'html':  # noqa: F821
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
@@ -28,7 +28,7 @@ def search4letters(phrase: str, letters: str = 'aeiou') -> set:
 
 
 @app.route('/entry', methods=['GET', 'POST'])
-def entry_page() -> 'html':
+def entry_page() -> 'html':  # noqa: F821
     return render_template('entry.html',
                            the_title='Welcome to search4letters on the web!')
 
