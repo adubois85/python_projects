@@ -52,7 +52,11 @@ def view_log() -> str:
             contents.append([])
             for item in line.split('|'):
                 contents[-1].append(escape(item))
-    return str(contents)
+    titles = ('Form Data', 'Remote_addr', 'User_agent', 'Results')
+    return render_template('viewlog.html',
+                           the_title='View log',
+                           the_row_titles=titles,
+                           the_data=contents)
 
 
 if __name__ == '__main__':
