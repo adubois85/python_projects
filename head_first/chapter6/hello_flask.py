@@ -52,7 +52,6 @@ def view_log() -> 'html':  # noqa: F821
             contents.append([])
             for item in line.split('|'):
                 contents[-1].append(escape(item))
-    return str(contents)
     titles = ('Form Data', 'Remote_addr', 'User_agent', 'Results')
     return render_template('viewlog.html',
                            the_title='View log',
