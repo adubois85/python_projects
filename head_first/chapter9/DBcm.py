@@ -8,6 +8,6 @@ class UseDatabase:
     def __enter__(self):
         pass
 
-    def __exit(self):
+    def __exit__(self):
         pass
 
