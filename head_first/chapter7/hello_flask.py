@@ -16,7 +16,11 @@ def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
               (phrase, letters, ip, browser_string, results)
               values
               (%s, %s, %s, %s, %s)"""
-    cursor.execute(_SQL, ('galaxy', 'xyz', '127.0.0.1', 'Opera', "{'x', 'y'}"))
+    cursor.execute(_SQL, (req.form['phrase'], 
+                          req.form['letters'],
+                          req.Remote_addr,
+                          req.User_agent.browser_string,
+                          res, ))
     conn.commit()
     cursor.close()
     conn.close()
