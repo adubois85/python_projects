@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
     dbconfig = {'host': '127.0.0.1',
+                'port': '8889',
                 'user': 'vsearch',
                 'password': 'vsearchpasswd',
                 'database': 'vsearchlogDB', }
