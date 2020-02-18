@@ -18,8 +18,8 @@ def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
               (%s, %s, %s, %s, %s)"""
     cursor.execute(_SQL, (req.form['phrase'], 
                           req.form['letters'],
-                          req.Remote_addr,
-                          req.User_agent.browser_string,
+                          req.remote_addr,
+                          req.user_agent.browser,
                           res, ))
     conn.commit()
     cursor.close()
