@@ -1,15 +1,15 @@
 from flask import Flask, render_template, request, escape
+from DBcm import UseDatabase
 
 app = Flask(__name__)
 
+dbconfig = {'host': '127.0.0.1',
+            'port': '8889',
+            'user': 'vsearch',
+            'password': 'vsearchpasswd',
+            'database': 'vsearchlogDB', }
 
 def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
-    dbconfig = {'host': '127.0.0.1',
-                'port': '8889',
-                'user': 'vsearch',
-                'password': 'vsearchpasswd',
-                'database': 'vsearchlogDB', }
-    import mysql.connector
     conn = mysql.connector.connect(**dbconfig)
     cursor = conn.cursor()
     _SQL = """insert into log
