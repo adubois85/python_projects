@@ -15,11 +15,11 @@ def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
                 (phrase, letters, ip, browser_string, results)
                 values
                 (%s, %s, %s, %s, %s)"""
-    cursor.execute(_SQL, (req.form['phrase'], 
-                          req.form['letters'],
-                          req.remote_addr,
-                          req.user_agent.browser,
-                          res, ))
+        cursor.execute(_SQL, (req.form['phrase'], 
+                            req.form['letters'],
+                            req.remote_addr,
+                            req.user_agent.browser,
+                            res, ))
 
 
 # @app.route('/')
