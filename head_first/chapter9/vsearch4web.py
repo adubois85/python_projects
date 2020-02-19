@@ -65,7 +65,7 @@ def view_log() -> 'html':
                   FROM log"""
         cursor.execute(_SQL)
         contents = cursor.fetchall()
-    titles = ('Phrase', 'Letters' 'Remote_addr', 'User_agent', 'Results')
+    titles = ('Phrase', 'Letters', 'Remote_addr', 'User_agent', 'Results')
     return render_template('viewlog.html',
                            the_title='View log',
                            the_row_titles=titles,
