@@ -10,20 +10,16 @@ app.config['dbconfig'] = {'host': '127.0.0.1',
                           'database': 'vsearchlogDB', }
 
 def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
-    conn = mysql.connector.connect(**dbconfig)
-    cursor = conn.cursor()
-    _SQL = """insert into log
-              (phrase, letters, ip, browser_string, results)
-              values
-              (%s, %s, %s, %s, %s)"""
+    with UseDatabase(app.config['dbconfig']) as cursor:
+        _SQL = """insert into log
+                (phrase, letters, ip, browser_string, results)
+                values
+                (%s, %s, %s, %s, %s)"""
     cursor.execute(_SQL, (req.form['phrase'], 
                           req.form['letters'],
                           req.remote_addr,
                           req.user_agent.browser,
                           res, ))
-    conn.commit()
-    cursor.close()
-    conn.close()
 
 
 # @app.route('/')
