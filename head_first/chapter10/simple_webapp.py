@@ -1,6 +1,13 @@
-from flask import Flask
+from flask import Flask, session
 
 app = Flask(__name__)
+
+app.route('/login')
+def do_login() -> str:
+    session['logged_in'] = True
+    return 'You are now logged in.'
+
+app.secret_key = 'MyKeyIsSecretYo'
 
 @app.route('/')
 def hello() -> str:
