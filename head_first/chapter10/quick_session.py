@@ -14,5 +14,5 @@ def setuser(user: str) -> str:
 def getuser() -> str:
     return 'User value is currently set to: ' + session['user']
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     app.run(debug=True)
