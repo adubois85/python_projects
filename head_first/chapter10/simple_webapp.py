@@ -7,6 +7,11 @@ def do_login() -> str:
     session['logged_in'] = True
     return 'You are now logged in.'
 
+app.route('/logout')
+def do_logout() -> str:
+    session.pop('logged_in')
+    return 'You are now logged out.'
+
 app.secret_key = 'MyKeyIsSecretYo'
 
 @app.route('/')
