@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, escape
-from chapter9.DBcm import UseDatabase
+from DBcm import UseDatabase
 
 app = Flask(__name__)
 
