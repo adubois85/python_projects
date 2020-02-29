@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, escape
-from DBcm import UseDatabase, MyConnectionError
+from DBcm2 import UseDatabase, MyConnectionError
 
 app = Flask(__name__)
 
