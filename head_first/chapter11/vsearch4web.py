@@ -63,16 +63,20 @@ def entry_page() -> 'html':  # noqa: F821
 #         contents = log.read()
 #     return escape(contents)
 def view_log() -> 'html':
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = """SELECT phrase, letters, ip, browser_string, results
-                  FROM log"""
-        cursor.execute(_SQL)
-        contents = cursor.fetchall()
-    titles = ('Phrase', 'Letters', 'Remote_addr', 'User_agent', 'Results')
-    return render_template('viewlog.html',
-                           the_title='View log',
-                           the_row_titles=titles,
-                           the_data=contents)
+    try:
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = """SELECT phrase, letters, ip, browser_string, results
+                    FROM log"""
+            cursor.execute(_SQL)
+            contents = cursor.fetchall()
+        titles = ('Phrase', 'Letters', 'Remote_addr', 'User_agent', 'Results')
+        return render_template('viewlog.html',
+                               the_title='View log',
+                               the_row_titles=titles,
+                               the_data=contents)
+    except Exception as err:
+        print('Something went wrong: ', str(err))
+    return 'Error'
 
 
 if __name__ == '__main__':
