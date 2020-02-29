@@ -1,6 +1,8 @@
 import mysql.connector
+from mysql.connector.errors import Error
 
 class MyConnectionError(Exception):
+    """Raised when there is a connection"""
     pass
 
 class UseDatabase:
@@ -13,7 +15,7 @@ class UseDatabase:
             self.conn = mysql.connector.connect(**self.configuration)
             self.cursor = self.conn.cursor()
             return self.cursor
-        except mysql.connector.errors.InterfaceError as err:
+        except mysql.connector.errors.DatabaseError as err:
             raise MyConnectionError(err)
 
     def __exit__(self, exc_type, exc_value, exc_trace) -> None:
