@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, escape
-from DBcm import UseDatabase, ConnectionError
+from DBcm import UseDatabase, MyConnectionError
 
 app = Flask(__name__)
 
@@ -74,7 +74,7 @@ def view_log() -> 'html':
                                the_title='View log',
                                the_row_titles=titles,
                                the_data=contents)
-    except ConnectionError as err:
+    except MyConnectionError as err:
         print('Is your database turned on?  Error: ', str(err))
     except Exception as err:
         print('Something went wrong: ', str(err))

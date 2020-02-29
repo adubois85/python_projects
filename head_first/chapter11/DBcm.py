@@ -1,6 +1,6 @@
 import mysql.connector
 
-class ConnectionError(Exception):
+class MyConnectionError(Exception):
     pass
 
 class UseDatabase:
@@ -14,7 +14,7 @@ class UseDatabase:
             self.cursor = self.conn.cursor()
             return self.cursor
         except mysql.connector.errors.InterfaceError as err:
-            raise ConnectionError(err)
+            raise MyConnectionError(err)
 
     def __exit__(self, exc_type, exc_value, exc_trace) -> None:
         self.conn.commit()
