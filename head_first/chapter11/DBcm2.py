@@ -5,6 +5,12 @@ class MyConnectionError(Exception):
     """Raised when there is a connection"""
     pass
 
+class CredentialsError(Exception):
+    pass
+
+class SQLError(Exception):
+    pass
+
 class UseDatabase:
     
     def __init__(self, config: dict) -> None:
@@ -17,6 +23,8 @@ class UseDatabase:
             return self.cursor
         except mysql.connector.errors.DatabaseError as err:
             raise MyConnectionError(err)
+        except mysql.connector.errors.ProgrammingError as err:
+            raise CredentialsError(err)
 
     def __exit__(self, exc_type, exc_value, exc_trace) -> None:
         self.conn.commit()
