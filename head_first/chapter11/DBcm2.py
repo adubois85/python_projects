@@ -21,10 +21,10 @@ class UseDatabase:
             self.conn = mysql.connector.connect(**self.configuration)
             self.cursor = self.conn.cursor()
             return self.cursor
-        except mysql.connector.errors.DatabaseError as err:
-            raise MyConnectionError(err)
         except mysql.connector.errors.ProgrammingError as err:
             raise CredentialsError(err)
+        except mysql.connector.errors.DatabaseError as err:
+            raise MyConnectionError(err)
 
     def __exit__(self, exc_type, exc_value, exc_trace) -> None:
         self.conn.commit()
