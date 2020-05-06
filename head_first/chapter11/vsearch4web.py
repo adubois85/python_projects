@@ -74,10 +74,10 @@ def view_log() -> 'html':
                                the_title='View log',
                                the_row_titles=titles,
                                the_data=contents)
-    except MyConnectionError as err:
-        print('Is your database turned on?  Error: ', str(err))
     except CredentialsError as err:
         print('Incorrect username / password.  Error: ', str(err))
+    except MyConnectionError as err:
+        print('Is your database turned on?  Error: ', str(err))
     except Exception as err:
         print('Something went wrong: ', str(err))
     return 'Error'
