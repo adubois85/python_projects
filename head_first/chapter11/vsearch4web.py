@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, escape
 from DBcm2 import UseDatabase, MyConnectionError, CredentialsError, SQLError
+from threading import Thread
 
 app = Flask(__name__)
 
@@ -35,7 +36,9 @@ def do_search() -> 'html':  # noqa: F821
     title = 'Here are your results:'
     results = str(search4letters(phrase, letters))
     try:
-            log_request(request, results)
+        # log_request(request, results)
+        t = Thread(target=log_request, args=(request, results))
+        t.start()
     except Exception as err:
         print('*****Logging failed with the following error:', str(err))
     return render_template('results.html',
