@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, copy_current_request_context
 from DBcm2 import UseDatabase, MyConnectionError, CredentialsError, SQLError
 from threading import Thread
 
