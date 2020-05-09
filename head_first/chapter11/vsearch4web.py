@@ -10,18 +10,6 @@ app.config['dbconfig'] = {'host': '127.0.0.1',
                           'password': 'vsearchpasswd',
                           'database': 'vsearchlogDB', }
 
-def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = """insert into log
-                (phrase, letters, ip, browser_string, results)
-                values
-                (%s, %s, %s, %s, %s)"""
-        cursor.execute(_SQL, (req.form['phrase'], 
-                            req.form['letters'],
-                            req.remote_addr,
-                            req.user_agent.browser,
-                            res, ))
-
 
 # @app.route('/')
 # def hello() -> '302':
@@ -31,6 +19,19 @@ def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
 
 @app.route('/search4', methods=['GET', 'POST'])
 def do_search() -> 'html':  # noqa: F821
+    @copy_current_request_context
+    def log_request(req: 'flask_request', res: str) -> None:  # noqa: F821
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = """insert into log
+                    (phrase, letters, ip, browser_string, results)
+                    values
+                    (%s, %s, %s, %s, %s)"""
+            cursor.execute(_SQL, (req.form['phrase'], 
+                                req.form['letters'],
+                                req.remote_addr,
+                                req.user_agent.browser,
+                                res, ))
+
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
