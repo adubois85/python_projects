@@ -31,7 +31,6 @@ def do_search() -> 'html':  # noqa: F821
                                 req.remote_addr,
                                 req.user_agent.browser,
                                 res, ))
-
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
