@@ -12,3 +12,12 @@ with open('schedule.csv') as data:
         k, v = line.strip().split(',')
         flights[k] = v
 
+pprint(flights)
+print()
+
+flights2 = {}
+
+for k, v in flights.items():
+    flights2[convert12hour(k)] = v.title()
+
+pprint(flights2)
