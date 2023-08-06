@@ -1,1 +1,0 @@
-# this is just to test if my git setup is configured and working correctly
