@@ -1,3 +1,4 @@
+'''Takes a sentence as input and returns a bar graph of letter frequency'''
 import pprint as pp
 
 def etaoin(text: str) -> dict:
