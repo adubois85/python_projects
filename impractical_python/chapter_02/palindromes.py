@@ -5,6 +5,9 @@ def find_palindromes() -> list:
     words = load_dictionary.load("words.txt")
     palindromes = []
     for word in words:
-        if word == word[::-1]:
+        # single letters aren't really palindromes
+        if len(word) > 1 and word == word[::-1]:
             palindromes.append(word)
+    print(f"\nNumber of palindromes found = {len(palindromes)}\n")
+    print(*palindromes, sep='\n')
     return palindromes
