@@ -14,4 +14,4 @@ def find_palingrams():
                     palingrams.append(f"{word} {rev_word[end - i:]}")
                 if word[:end - i] == rev_word[i:] and rev_word[:i] in words:
                     palingrams.append(f"{rev_word[:i]} {word}")
-    return palingrams
+    return sorted(palingrams)
