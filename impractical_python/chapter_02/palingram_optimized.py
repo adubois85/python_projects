@@ -14,8 +14,12 @@ def find_palingrams():
             for i in range(end):
                 if word[i:] == rev_word[:end - i] and rev_word[end - i:] in words:
                     palingrams.append(f"{word} {rev_word[end - i:]}")
-                if word[:end - i] == rev_word[i:] and rev_word[:i] in words:
-                    palingrams.append(f"{rev_word[:i]} {word}")
+                ## my old method failed to capture words that were palindromes
+                ## i.e. i = 0, which meant rev_word[:i] was an empty string
+                # if word[:end - i] == rev_word[i:] and rev_word[:i] in words:
+                #     palingrams.append(f"{rev_word[:i]} {word}")
+                if word[:i] == rev_word[end - i:] and rev_word[:end - i] in words:
+                    palingrams.append(f"{rev_word[:end - i]} {word}")
     return sorted(palingrams)
 
 # start_time = time.time()
