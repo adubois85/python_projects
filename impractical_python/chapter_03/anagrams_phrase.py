@@ -9,6 +9,9 @@ name = input("Enter a full name and get to building an anagram of it.\n")
 name = re.findall(r'[a-zA-Z]+', name.lower())
 name = Counter("".join(name))
 words = load_dictionary.load("../chapter_02/words.txt")
+# 'a' and 'I' are valid words for anagrams
+words.append("a")
+words.append("i")
 
 def main():
     name_limit = len(name)
