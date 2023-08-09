@@ -1,8 +1,9 @@
 '''Progressively builds an anagram from user-inputted name'''
 from collections import Counter
-import load_dictionary
 import pprint as pp
 import re
+
+import load_dictionary
 
 # This should strip everything that isn't one of the 26 letters from the name
 name = input("Enter a full name and get to building an anagram of it.\n")
