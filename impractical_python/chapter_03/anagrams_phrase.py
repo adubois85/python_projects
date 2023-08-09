@@ -12,8 +12,18 @@ words = load_dictionary.load("../chapter_02/words.txt")
 def main():
     pass
 
-def find_anagrams():
-    pass
+def find_anagrams(name, words: list) -> list:
+    name = Counter(name)
+    anagrams = []
+    for word in words:
+        count = Counter(word)
+        temp = ''
+        for letter in word:
+            if count[letter] <= name[letter]:
+                temp += letter
+        if Counter(temp) == count:
+            anagrams.append(word)
+    return anagrams
 
 def process_choice():
     pass
