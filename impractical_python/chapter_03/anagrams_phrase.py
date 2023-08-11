@@ -7,9 +7,9 @@ import sys
 import load_dictionary
 
 # This should strip everything that isn't one of the 26 letters from the name
-name = input("Enter a full name and get to building an anagram of it.\n")
-name = re.findall(r'[a-zA-Z]+', name.lower())
-name = Counter("".join(name))
+initial_name = input("Enter a full name and get to building an anagram of it.\n")
+name = re.findall(r'[a-zA-Z]+', initial_name.lower())
+name_count = Counter("".join(initial_name))
 words = load_dictionary.load("../chapter_02/words.txt")
 # 'a' and 'I' are valid words for anagrams
 words.append("a")
