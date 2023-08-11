@@ -20,7 +20,9 @@ def main():
     phrase_limit = sum(map(len, anagram_phrase))
     while phrase_limit < name_limit:
         possible_anagrams = find_anagrams(name, words)
-        pp.pprint(possible_anagrams)
+        print(*possible_anagrams, sep='\n')
+        print(f'Possible anagrams remaining: {len(possible_anagrams)}')
+        print(f'There are {len(name)} remaining letters.  They are: {name}')
         print(f'The current anagram is "{" ".join(anagram_phrase)}"')
 
 
