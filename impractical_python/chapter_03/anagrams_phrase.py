@@ -15,7 +15,7 @@ words = load_dictionary.load("../chapter_02/words.txt")
 words.append("a")
 words.append("i")
 
-def main():
+def main(name=name):
     name_limit = len(name)
     anagram_phrase = []
     phrase_limit = sum(map(len, anagram_phrase))
@@ -54,7 +54,8 @@ def process_choice():
             sys.exit()
         elif word_choice == '#':
             main()
-        word_choice = word_choice.lower()
+        # do the same as above to strip all non-alphabetic characters
+        word_choice = re.findall(r'[a-zA-Z]+', word_choice.lower())
         name_list = list(name)
         for letter in word_choice:
             if letter in name_list:
