@@ -25,6 +25,11 @@ def main():
         print(f'Possible anagrams remaining: {len(possible_anagrams)}')
         print(f'There are {len(name)} remaining letters.  They are: {name}')
         print(f'The current anagram is "{" ".join(anagram_phrase)}"')
+        choices = process_choice()
+        anagram_phrase.append(choices[0])
+        name = choices[1]
+        phrase_limit = sum(map(len, anagram_phrase))
+        name_limit = len(name)
 
 
 def find_anagrams(name, words: list) -> list:
@@ -43,10 +48,18 @@ def find_anagrams(name, words: list) -> list:
 # I'm trying really hard to follow along with the examples in the book, but
 # the way he organizes code and breaks down the problem is often odd to me.
 def process_choice():
-    word_choice = input("Choose the next word for the anagram, or hit Enter to start over, else '#' to end")
-    if word_choice == '':
-        sys.exit()
-    elif word_choice == '#':
-        main()
-    word_choice = word_choice.lower()
-    
+    while True:
+        word_choice = input("Choose the next word for the anagram, or hit Enter to start over, else '#' to end")
+        if word_choice == '':
+            sys.exit()
+        elif word_choice == '#':
+            main()
+        word_choice = word_choice.lower()
+        name_list = list(name)
+        for letter in word_choice:
+            if letter in name_list:
+                name_list.remove(letter)
+        if len(name) - len(name_list) == len(word_choice):
+            break
+        print("That word won't work, try again.")
+    return word_choice, ''.join(name_list)
